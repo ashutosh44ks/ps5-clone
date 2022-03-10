@@ -10,7 +10,7 @@ const Home = ( {user, userList} ) => {
       <Navbar tab={activeTab} setTab={setActiveTab} user={user} userList={userList}/>
       {activeTab === "Games" || activeTab === "Media" ? (
         <div>
-          <AppMenu tab={activeTab} setTab={setActiveTab} />
+          <AppMenu tab={activeTab} />
         </div>
       ) : (
         <div>This needs a separate component</div>

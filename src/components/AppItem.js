@@ -1,8 +1,6 @@
 import "./stylesheets/AppMenu.css";
 
-//An individual App Box
 const AppItem = ({ item }) => {
-  
   return (
     <div>
       <div className="app-item bright-text">{item.icon}</div>
