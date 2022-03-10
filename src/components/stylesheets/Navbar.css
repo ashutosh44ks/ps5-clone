@@ -1,0 +1,34 @@
+#navbar {
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0;
+    padding-top: 0.3rem; 
+}
+#navbar div {
+    display: flex;
+}
+#navbar #nav-right .nav-item{
+    padding: 1rem 0;
+    color: #f2f5f7;
+}
+
+.nav-item {
+    list-style: none;
+    margin: 0 1rem;
+    padding: 1rem 0.5rem;
+    color: rgba(242, 245, 247, 0.5);
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.1s;
+}
+
+#nav-left .nav-item.active {
+    color: #f2f5f7;
+    font-weight: 500;
+    padding: 1rem;
+}
+
+.nav-item:hover {
+    color: #f2f5f7;
+}

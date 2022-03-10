@@ -1,0 +1,31 @@
+#app-menu {
+  display: flex;
+  margin-left: 1.5rem;
+}
+.app-item-hover {
+  color: transparent;
+  transform: translateY(3rem);
+}
+.app-item {
+  padding: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.8);
+  margin: 0.5rem 0.2rem;
+  border-radius: 0.4rem;
+  height: 2.5rem;
+  width: 2.5rem;
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.app-item:hover {
+  margin: 0 1.5rem;
+  transform: scale(1.5) translateY(1rem);
+  border-radius: 0.4rem;
+}
+
+#app-desc {
+  padding: 5rem;
+}

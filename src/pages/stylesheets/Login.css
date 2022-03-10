@@ -1,0 +1,54 @@
+#login-page {
+  background: url("./Login.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+}
+
+.login-clock {
+  position: absolute;
+  right: 2rem;
+  top: 2rem;
+}
+#login-container {
+  padding: 5rem;
+}
+#login-head {
+  font-size: xx-large;
+  margin: 1rem;
+}
+.login-controller {
+  font-size: 1.5rem;
+  text-align: center;
+  color: transparent;
+}
+#login-users-container {
+  display: flex;
+  padding: 3rem 0;
+  justify-content: space-around;
+}
+.login-user {
+  background-color: rgba(105, 105, 105, 0.2);
+  border-radius: 4rem;
+  font-size: 5rem;
+  width: 8rem;
+  height: 8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.login-user-add {
+  font-size: 3rem;
+  color: rgba(242, 245, 247, 0.5);
+}
+.login-user:hover {
+  transform: scale(1.2);
+  margin: 1rem 0 1.5rem;
+}
+.login-details {
+  color: white;
+  margin-top: 1rem;
+}

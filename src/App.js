@@ -1,24 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
+import { useState } from "react";
+import { FaUserSecret, FaUserAstronaut, FaPlus } from "react-icons/fa";
 
+import Login from "./pages/Login";
+import Home from "./pages/Home";
+import Search from "./pages/Search";
+import Settings from "./pages/Settings";
 function App() {
+  const [user, setUser] = useState(0);
+
+  //setter for later adding users via AddUser
+  const [userList, setUserList] = useState([
+    { userID: 0, userIcon: <FaPlus />, userName: "Add User" },
+    { userID: 1, userIcon: <FaUserAstronaut />, userName: "AstroKing42" },
+    { userID: 2, userIcon: <FaUserSecret />, userName: "CoolAgent007" },
+  ]);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route
+          path="/"
+          index
+          element={<Navigate replace to="/ps5-clone/Login" />}
+        ></Route>
+        <Route
+          path="/ps5-clone/Login"
+          element={<Login setUser={setUser} userList={userList}/>}
+        ></Route>
+        <Route path="/ps5-clone/Home" element={<Home user={user} userList={userList} />}></Route>
+        <Route path="/ps5-clone/Search" element={<Search />}></Route>
+        <Route path="/ps5-clone/Settings" element={<Settings />}></Route>
+      </Routes>
+    </Router>
   );
 }
 
