@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 import Clock from "react-live-clock";
 import { FaSearch } from "react-icons/fa";
 import { RiSettings5Fill } from "react-icons/ri";
@@ -27,19 +28,25 @@ const Navbar = ({ setTab, user, userList }) => {
         </div>
         <div id="nav-right">
           <li className="nav-item">
-            <FaSearch />
-            {/* Open new page <Search /> */}
+            <Link to="/ps5-clone/Search">
+              <FaSearch />
+            </Link>
           </li>
           <li className="nav-item">
+            <Link to="/ps5-clone/Settings">
             <RiSettings5Fill />
-            {/* Open new page <Settings /> */}
+            </Link>
           </li>
           <li className="nav-item">
             {userList[user].userIcon}
             {/*Open DropDown*/}
           </li>
           <li className="nav-item">
-            <Clock format={"HH:mm A"} ticking={true} timezone={"Asia/Kolkata"} />
+            <Clock
+              format={"HH:mm A"}
+              ticking={true}
+              timezone={"Asia/Kolkata"}
+            />
           </li>
         </div>
       </ul>

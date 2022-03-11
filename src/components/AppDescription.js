@@ -1,7 +1,6 @@
 import { AiFillTrophy } from "react-icons/ai";
 
 const AppDescription = ({ item, tab }) => {
-  console.log(item);
   if (item === undefined) return "";
   else if (tab === "Games")
     return (
@@ -33,7 +32,6 @@ const AppDescription = ({ item, tab }) => {
         </div>
       </div>
     );
-  else return "tab other than Games or Media";
 };
 
 export default AppDescription;

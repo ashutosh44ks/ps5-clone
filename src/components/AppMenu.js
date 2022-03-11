@@ -15,7 +15,6 @@ import { MdOutlinePermMedia, MdMonitor } from "react-icons/md";
 import { GiConsoleController } from "react-icons/gi";
 import { SiPrime } from "react-icons/si";
 
-//The App boxes
 const AppMenu = ({ tab }) => {
   const [gameList, setGameList] = useState([
     { id: 0, icon: <BsFillBagPlusFill />, name: "PS Store", type: "sys" },
@@ -58,7 +57,7 @@ const AppMenu = ({ tab }) => {
           ? gameList.map((item) => <AppItem key={item.id} item={item} />)
           : mediaList.map((item) => <AppItem key={item.id} item={item} />)}
       </div>
-      {tab === "Games" ? (
+      {tab === "Games"? (
         <AppDescription item={gameList[currentItem]} tab={tab} />
       ) : (
         <AppDescription item={mediaList[currentItem]} tab={tab} />
