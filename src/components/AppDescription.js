@@ -1,10 +1,39 @@
-import React from 'react'
+import { AiFillTrophy } from "react-icons/ai";
 
-//App Description w.r.t. selected App Item
-const AppDescription = () => {
-  return (
-    <div id='app-desc'>AppDescription</div>
-  )
-}
+const AppDescription = ({ item, tab }) => {
+  console.log(item);
+  if (item === undefined) return "";
+  else if (tab === "Games")
+    return (
+      <div id="app-desc">
+        <div className="app-logo">{item.name}</div>
+        <div className="app-desc-container">
+          <div>
+            <button className="app-btn">Play</button>
+            <button className="app-btn app-options">...</button>
+          </div>
+          <button className="app-btn app-progress">
+            <AiFillTrophy />
+            <div>
+              Progress <div>0%</div>
+            </div>
+            <div>
+              Earned <div>0/41</div>
+            </div>
+          </button>
+        </div>
+      </div>
+    );
+  else if (tab === "Media")
+    return (
+      <div id="app-desc">
+        <div className="app-logo">{item.name}</div>
+        <div className="app-desc-container">
+          <button className="app-btn">Open</button>
+        </div>
+      </div>
+    );
+  else return "tab other than Games or Media";
+};
 
-export default AppDescription
+export default AppDescription;

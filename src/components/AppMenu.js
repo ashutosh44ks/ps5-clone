@@ -1,7 +1,13 @@
 import AppItem from "./AppItem";
 import AppDescription from "./AppDescription";
 import { useState, useEffect } from "react";
-import { BsFillBagPlusFill, BsFillGrid3X2GapFill, BsYoutube, BsTwitch, BsFillGridFill } from "react-icons/bs";
+import {
+  BsFillBagPlusFill,
+  BsFillGrid3X2GapFill,
+  BsYoutube,
+  BsTwitch,
+  BsFillGridFill,
+} from "react-icons/bs";
 import { IoRocketSharp } from "react-icons/io5";
 import { RiGameFill, RiNetflixFill } from "react-icons/ri";
 import { TiPlus } from "react-icons/ti";
@@ -12,23 +18,24 @@ import { SiPrime } from "react-icons/si";
 //The App boxes
 const AppMenu = ({ tab }) => {
   const [gameList, setGameList] = useState([
-    { id: 0, icon: <BsFillBagPlusFill />, name: "PS Store" },
-    { id: 1, icon: <IoRocketSharp />, name: "Explore" },
-    { id: 2, icon: <RiGameFill />, name: "AstroBoy" },
-    { id: 3, icon: <TiPlus />, name: "PS Plus" },
-    { id: 4, icon: <MdOutlinePermMedia />, name: "Gallery" },
-    { id: 5, icon: <GiConsoleController />, name: "Remote Play" },
-    { id: 6, icon: <BsFillGrid3X2GapFill />, name: "All Games" },
+    { id: 0, icon: <BsFillBagPlusFill />, name: "PS Store", type: "sys" },
+    { id: 1, icon: <IoRocketSharp />, name: "Explore", type: "sys" },
+    { id: 2, icon: <RiGameFill />, name: "AstroBoy", type: "app" },
+    { id: 3, icon: <TiPlus />, name: "PS Plus", type: "sys" },
+    { id: 4, icon: <MdOutlinePermMedia />, name: "Gallery", type: "sys" },
+    { id: 5, icon: <GiConsoleController />, name: "Remote Play", type: "sys" },
+    { id: 6, icon: <BsFillGrid3X2GapFill />, name: "All Games", type: "sys" },
   ]);
   const [mediaList, setMediaList] = useState([
-    { id: 0, icon: <BsFillGridFill />, name: "All Apps" },
-    { id: 1, icon: <MdMonitor />, name: "TV & Video" },
-    { id: 2, icon: <BsYoutube />, name: "Youtube" },
-    { id: 3, icon: <BsTwitch />, name: "Twitch" },
-    { id: 4, icon: <RiNetflixFill />, name: "Netflix" },
-    { id: 5, icon: <SiPrime />, name: "Prime" },
-    { id: 6, icon: <BsFillGrid3X2GapFill />, name: "App Library" },
+    { id: 0, icon: <BsFillGridFill />, name: "All Apps", type: "sys" },
+    { id: 1, icon: <MdMonitor />, name: "TV & Video", type: "sys" },
+    { id: 2, icon: <BsYoutube />, name: "Youtube", type: "app" },
+    { id: 3, icon: <BsTwitch />, name: "Twitch", type: "app" },
+    { id: 4, icon: <RiNetflixFill />, name: "Netflix", type: "app" },
+    { id: 5, icon: <SiPrime />, name: "Prime", type: "app" },
+    { id: 6, icon: <BsFillGrid3X2GapFill />, name: "App Library", type: "sys" },
   ]);
+  const [currentItem, setCurrentItem] = useState(-1);
   useEffect(() => {
     const item = document.querySelectorAll(".app-item");
     const hover = document.querySelectorAll(".app-item-hover");
@@ -39,6 +46,9 @@ const AppMenu = ({ tab }) => {
       item[i].onmouseout = function () {
         hover[i].style.color = "transparent";
       };
+      item[i].addEventListener("click", () => {
+        setCurrentItem(i);
+      });
     }
   }, [tab]);
   return (
@@ -48,7 +58,11 @@ const AppMenu = ({ tab }) => {
           ? gameList.map((item) => <AppItem key={item.id} item={item} />)
           : mediaList.map((item) => <AppItem key={item.id} item={item} />)}
       </div>
-      <AppDescription />
+      {tab === "Games" ? (
+        <AppDescription item={gameList[currentItem]} tab={tab} />
+      ) : (
+        <AppDescription item={mediaList[currentItem]} tab={tab} />
+      )}
     </>
   );
 };

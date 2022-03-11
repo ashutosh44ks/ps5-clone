@@ -5,6 +5,7 @@
 .app-item-hover {
   color: transparent;
   transform: translateY(3rem);
+  font-size: 0.7rem;
 }
 .app-item {
   padding: 0.5rem;
@@ -28,4 +29,37 @@
 
 #app-desc {
   padding: 5rem;
+  margin-top: 4rem;
+}
+.app-logo {
+  font-size: xxx-large;
+  margin: 2rem 0;
+}
+.app-desc-container {
+  display: flex;
+  justify-content: space-between;
+}
+.app-btn {
+  background-color: rgba(10, 10, 10, 0.2);
+  color: white;
+  font-weight: 500;
+  padding: 0.5rem 3rem;
+  margin: 0.5rem;
+  border: none;
+  border-radius: 1rem;
+  cursor: pointer;
+}
+.app-options {
+  padding: 0.5rem 0.7rem;
+}
+.app-progress {
+  border-radius: 0;
+  padding: 0.5rem;
+  display: flex;
+  width: 10rem;
+    justify-content: space-around;
+    align-items: center;
+}
+.app-progress svg {
+  font-size: xx-large;
 }
