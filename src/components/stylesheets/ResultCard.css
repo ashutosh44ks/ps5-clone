@@ -1,0 +1,18 @@
+.card-container {
+  background: black;
+  height: 10rem;
+  width: 10rem;
+  color: #f2f5f7;
+  font-size: 0.8rem;
+}
+.card-body {
+  padding: 5.5rem 0.8rem 1rem 0.8rem;
+}
+.card-title {
+  margin-bottom: 1.5rem;
+}
+.card-info {
+  color: white;
+  display: flex;
+  justify-content: space-between;
+}

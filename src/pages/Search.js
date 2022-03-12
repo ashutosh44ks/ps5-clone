@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Axios from "axios";
 import "./stylesheets/Search.css";
 import ResultCard from "../components/ResultCard";
+import { FaMicrophone } from "react-icons/fa";
 
 function Search() {
   const [search, setSearch] = useState("");
@@ -20,19 +21,22 @@ function Search() {
   return (
     <div id="search-page">
       <ul id="search-nav">
-        <li>All</li>
-        <li>Games</li>
-        <li>Media</li>
-        <li>Players</li>
+        <li className="nav-item nav-item-search active">All</li>
+        <li className="nav-item nav-item-search">Games</li>
+        <li className="nav-item nav-item-search">Media</li>
+        <li className="nav-item nav-item-search">Players</li>
       </ul>
       <div id="search-bar">
         <input
-          placeholder="Search For games, movies, TV shows, players, and other apps"
+          placeholder="Search for games, movies, TV shows, players, and other apps"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
-        <button>Microphone Icon</button>
+        <button className="microphone-btn">
+          <FaMicrophone />
+        </button>
       </div>
+      <div id="search-sort">Trending</div>
       <div id="search-results-container">
         <ResultCard />
       </div>
