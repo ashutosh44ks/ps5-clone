@@ -7,17 +7,36 @@ import { FaMicrophone } from "react-icons/fa";
 function Search() {
   const [search, setSearch] = useState("");
   const [data, setData] = useState([]);
+  const [searchTab, setSearchTab] = useState("All");
   useEffect(() => {
-    getData();
-  }, [search]);
-  const getData = () => {
-    Axios.get(`https://www.omdbapi.com/?apikey=45ad3714&s=${search}`).then(
-      (response) => {
-        console.log(response.data.Search);
-        setData(response.data.Search);
-      }
-    );
+    const navBtns = document.querySelectorAll(".nav-item");
+    const activeNavBtn = document.querySelector(".active");
+    for (let i = 0; i < navBtns.length; i++) {
+      navBtns[i].addEventListener("click", () => {
+        activeNavBtn.classList.remove("active");
+        navBtns[i].classList.add("active");
+        setSearchTab(navBtns[i].innerHTML);
+      });
+    }
+    getData(1);
+  }, [search, searchTab]);
+  const getData = (page) => {
+    let type = "";
+    switch (searchTab) {
+      case "Games":
+        type = "game";
+        break;
+      default:
+        type = "";
+    }
+    Axios.get(
+      `https://www.omdbapi.com/?apikey=45ad3714&s=${search}&type=${type}&page=${page}`
+    ).then((response) => {
+      console.log(response.data.Search);
+      setData(response.data.Search);
+    });
   };
+  
   return (
     <div id="search-page">
       <ul id="search-nav">
@@ -36,9 +55,13 @@ function Search() {
           <FaMicrophone />
         </button>
       </div>
-      <div id="search-sort">Trending</div>
+      <div id="search-sort">
+        {data === undefined ? "" : "Most relevent results"}
+      </div>
       <div id="search-results-container">
-        <ResultCard />
+        {data !== undefined
+          ? data.map((item) => <ResultCard key={item.imdbID} item={item} />)
+          : "No Results Found"}
       </div>
     </div>
     // <div className="Search">

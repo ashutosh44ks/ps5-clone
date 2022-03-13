@@ -1,18 +1,18 @@
 import "./stylesheets/ResultCard.css";
 
-const ResultCard = ({ title="Title", price="Free", type="G"}) => {
+const ResultCard = ({ item }) => {
   return (
-    <div className="card-container">
+    <div className="card-container" style={{background:`url(${item.Poster})`}}>
       <div className="card-body">
         <div className="card-title">
-          {title}
+          {item.Title}
         </div>
         <div className="card-info">
           <div className="card-price">
-            {price}
+            {item.Year}
           </div>
           <div className="card-type">
-            {type}
+            {item.Type}
           </div>
         </div>
       </div>

@@ -32,9 +32,14 @@ input {
   border: solid #f2f5f7 1px;
   border-radius: 0.1rem;
   padding: 0 0.5rem;
+  color: #f2f5f7;
 }
 input::placeholder {
   color: rgba(242, 245, 247, 0.5);
+}
+input:focus {
+  background-color: #333;
+  outline: none;
 }
 .microphone-btn {
   background-color: transparent;
@@ -50,5 +55,9 @@ input::placeholder {
   color: #f2f5f7;
 }
 #search-results-container {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 13rem);
+  grid-template-rows: 13rem;
+  grid-gap: 0.9rem;
+  color: #f2f5f7;
 }

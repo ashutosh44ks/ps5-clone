@@ -1,15 +1,20 @@
 .card-container {
   background: black;
-  height: 10rem;
-  width: 10rem;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-size: 13rem !important;
+  height: 13rem;
+  width: 13rem;
   color: #f2f5f7;
   font-size: 0.8rem;
 }
 .card-body {
-  padding: 5.5rem 0.8rem 1rem 0.8rem;
+  margin: 8.5rem 0rem 0rem 0rem;
+  background: black;
+  padding: 0.8rem;
 }
 .card-title {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 .card-info {
   color: white;
