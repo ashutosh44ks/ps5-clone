@@ -2,18 +2,13 @@
   display: flex;
   margin-left: 1.5rem;
 }
-.app-item-hover {
-  color: transparent;
-  transform: translateY(3rem);
-  font-size: 0.7rem;
-}
 .app-item {
   padding: 0.5rem;
   background-color: rgba(0, 0, 0, 0.8);
   margin: 0.5rem 0.2rem;
   border-radius: 0.4rem;
-  height: 2.5rem;
-  width: 2.5rem;
+  height: 3rem;
+  width: 3rem;
   font-size: 2rem;
   display: flex;
   justify-content: center;
@@ -25,6 +20,15 @@
   margin: 0 1.5rem;
   transform: scale(1.5) translateY(1rem);
   border-radius: 0.4rem;
+}
+.app-item-hover {
+  color: transparent;
+  position: relative;
+  top: 1rem;
+  left: 7rem;
+  font-size: 1rem;
+  word-break: break-word;
+  width: 4.4rem;
 }
 
 #app-desc {
@@ -57,8 +61,8 @@
   padding: 0.5rem;
   display: flex;
   width: 10rem;
-    justify-content: space-around;
-    align-items: center;
+  justify-content: space-around;
+  align-items: center;
 }
 .app-progress svg {
   font-size: xx-large;
