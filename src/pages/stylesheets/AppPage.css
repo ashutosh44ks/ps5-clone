@@ -1,0 +1,16 @@
+.bg {
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  width: 100vw;
+  height: 100vh;
+  filter: brightness(0.5);
+  position: fixed;
+}
+#app-page {
+  position: relative;
+  padding: 2rem;
+}
+#app-page-body {
+  padding: 2rem 4rem 1rem 4rem;
+}

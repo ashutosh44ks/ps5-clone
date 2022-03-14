@@ -11,6 +11,7 @@ import Login from "./pages/Login";
 import Home from "./pages/Home";
 import Search from "./pages/Search";
 import Settings from "./pages/Settings";
+import AppPage from "./pages/AppPage";
 function App() {
   const [user, setUser] = useState(0);
 
@@ -35,6 +36,7 @@ function App() {
         <Route path="/ps5-clone/Home" element={<Home user={user} userList={userList} />}></Route>
         <Route path="/ps5-clone/Search" element={<Search />}></Route>
         <Route path="/ps5-clone/Settings" element={<Settings />}></Route>
+        <Route path="/ps5-clone/AppPage" element={<AppPage />}></Route>
       </Routes>
     </Router>
   );
