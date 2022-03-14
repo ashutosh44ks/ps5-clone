@@ -8,6 +8,8 @@ import { CgUserlane } from "react-icons/cg";
 import { AiFillTrophy } from "react-icons/ai";
 import { GoPrimitiveDot } from "react-icons/go";
 import { GiLaurelsTrophy } from "react-icons/gi";
+import { MdOutlineCircle } from "react-icons/md";
+import { TiTick } from "react-icons/ti";
 import "./stylesheets/Navbar.css";
 
 const Navbar = ({ setTab, user, userList }) => {
@@ -25,6 +27,11 @@ const Navbar = ({ setTab, user, userList }) => {
     const dropdownMenu = document.querySelector(".dropdown-menu");
     dropdown.addEventListener("click", () =>
       dropdownMenu.classList.toggle("hide")
+    );
+    const subdropdown = document.querySelector(".sub-dropdown");
+    const subdropdownMenu = document.querySelector(".sub-dropdown-menu");
+    subdropdown.addEventListener("click", () =>
+      subdropdownMenu.classList.toggle("hide")
     );
   });
 
@@ -49,14 +56,25 @@ const Navbar = ({ setTab, user, userList }) => {
           <li className="nav-item dropdown">{userList[user].userIcon}</li>
           <ul className="dropdown-menu hide">
             <li>{userList[user].userName}</li>
-            <li className="middle-li">
+            <li className="middle-li sub-dropdown">
               <div>
                 <ImUserCheck />
                 Online Status
               </div>
               <div>
                 <GoPrimitiveDot /> <span>Online</span>
-                {/* Another Dropdown */}
+                <ul className="sub-dropdown-menu hide">
+                  <li>
+                    <TiTick />
+                    <GoPrimitiveDot /> Online
+                  </li>
+                  <li>
+                    <GoPrimitiveDot /> Busy
+                  </li>
+                  <li>
+                    <MdOutlineCircle /> Online
+                  </li>
+                </ul>
               </div>
             </li>
             <li className="middle-li">
@@ -83,11 +101,13 @@ const Navbar = ({ setTab, user, userList }) => {
               </div>
             </li>
             <li>
+              <Link to="/ps5-clone/LogIn">
               <div>
                 <RiLogoutBoxRLine />
                 Log Out
-                {/* Link to Login */}
               </div>
+              </Link>
+              
             </li>
           </ul>
           <li className="nav-item">
