@@ -1,28 +1,58 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Clock from "react-live-clock";
-import { GiConsoleController } from "react-icons/gi";
+import SubDropdownMenu from "../components/SubDropdownMenu";
 import "./stylesheets/Login.css";
+import { GiConsoleController } from "react-icons/gi";
+import { FaPlus } from "react-icons/fa";
 
-const Login = ({ setUser, userList }) => {
+// Tasks:
+// User k niche <emnu icon/> Options lana hai
+// Bottom pe ShutDown Icon aur bottom right pe x to select
+// Add User Page banana hai
+
+const Login = ({ userList, setUserList }) => {
   let navigate = useNavigate();
   useEffect(() => {
-    const users = document.querySelectorAll(".login-user");
-    const hover = document.querySelectorAll(".login-hover");
-    for (let i = 0; i < 3; i++) {
-      users[i].onmouseover = function () {
-        hover[i].style.color = "white";
-      };
-      users[i].onmouseout = function () {
-        hover[i].style.color = "transparent";
-      };
-      if (i >= 1) {
-        users[i].addEventListener("click", () => {
-          setUser(i);
-          navigate("/ps5-clone/Home");
-        });
+    const menu = document.querySelector(".sub-dropdown-menu");
+    document.addEventListener("click", hideMenu);
+    function hideMenu() {
+      menu.style.display = "none";
+    }
+    function contextMenu(e) {
+      e.preventDefault();
+      if (menu.style.display === "block") hideMenu();
+      else {
+        menu.style.display = "block";
+        menu.style.left = e.pageX + "px";
+        menu.style.top = e.pageY + "px";
       }
     }
+    const users = document.querySelectorAll(".login-user");
+    const hover = document.querySelectorAll(".login-hover");
+    for (let i = 0; i < users.length; i++) {
+      users[i].addEventListener("onmouseover", () => {
+        hover[i].style.color = "white";
+      });
+      users[i].addEventListener("onmouseout", () => {
+        hover[i].style.color = "transparent";
+      });
+      if (users[i].classList.contains("login-user-selectable"))
+        users[i].addEventListener("contextmenu", contextMenu);
+    }
+    return () => {
+      document.removeEventListener("click", hideMenu);
+      for (let i = 0; i < users.length; i++) {
+        users[i].removeEventListener("onmouseover", () => {
+          hover[i].style.color = "white";
+        });
+        users[i].removeEventListener("onmouseover", () => {
+          hover[i].style.color = "transparent";
+        });
+        if (users[i].classList.contains("login-user-selectable"))
+          users[i].removeEventListener("contextmenu", contextMenu);
+      }
+    };
   });
   return (
     <div id="login-page">
@@ -42,25 +72,46 @@ const Login = ({ setUser, userList }) => {
         </div>
 
         <div id="login-users-container">
+          <div
+            className="login-user-container"
+            onClick={() => navigate("/ps5-clone/AddNewUser")}
+          >
+            <div className="login-hover login-controller">
+              <GiConsoleController />
+            </div>
+            <div className="login-user login-user-add">
+              <FaPlus />
+            </div>
+            <div className="login-details center-text bright-text">
+              Add User
+            </div>
+          </div>
           {userList.map((user) => (
-            <div className="login-user-container" key={user.userID}>
+            <div
+              className="login-user-container"
+              key={user.id}
+              onClick={() => {
+                userList.forEach((u) => {
+                  if (u.id === user.id) u.selected = !user.selected;
+                });
+                setUserList(userList);
+                navigate("/ps5-clone/Home");
+              }}
+            >
               <div className="login-hover login-controller">
                 <GiConsoleController />
               </div>
-              <div
-                className={
-                  user.userID === 0 ? "login-user login-user-add" : "login-user"
-                }
-              >
-                {user.userIcon}
+              <div className="login-user login-user-selectable">
+                {user.icon}
               </div>
               <div className="login-details center-text bright-text">
-                {user.userName}
+                {user.name}
               </div>
             </div>
           ))}
         </div>
       </div>
+      <SubDropdownMenu userList={userList} setUserList={setUserList} />
     </div>
   );
 };

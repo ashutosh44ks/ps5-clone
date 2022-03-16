@@ -39,6 +39,7 @@
   justify-content: center;
   cursor: pointer;
   transition: all 0.2s;
+  color: rgba(242, 245, 247, 0.8);
 }
 .login-user-add {
   font-size: 3rem;

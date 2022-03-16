@@ -39,17 +39,20 @@ a{
   padding: 0.1rem;
   transition: all 0.1s;
 }
-#nav-right .nav-item svg:hover {
+#nav-right .nav-item > svg:hover {
   color: rgba(105, 105, 105, 0.8);
   background-color: #f2f5f7;
   border-radius: 0.6rem;
   /* outline-style: inset; */
 }
 
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
 .dropdown-menu {
   position: absolute;
   right: 1rem;
-  top: 4.5rem;
+  top: 3.5rem;
   width: 28vw;
   list-style: none;
   padding: 0.5rem 1rem;
@@ -79,18 +82,4 @@ a{
 .dropdown-menu > li > div > span {
   color: rgba(242, 245, 247, 0.5);
   font-size: 0.8rem;
-}
-.sub-dropdown-menu {
-  position: absolute;
-  right: 1rem;
-  top: 2rem;
-  width: 12vw;
-  list-style: none;
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
-  background-color: rgba(30, 30, 30, 1);
-}
-.sub-dropdown-menu li {
-  padding: 0.5rem 0;
-  cursor: pointer;
 }

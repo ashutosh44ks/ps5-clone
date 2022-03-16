@@ -5,38 +5,46 @@ import {
   Navigate,
 } from "react-router-dom";
 import { useState } from "react";
-import { FaUserSecret, FaUserAstronaut, FaPlus } from "react-icons/fa";
-
+import { FaUserSecret, FaUserAstronaut } from "react-icons/fa";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
 import Search from "./pages/Search";
 import Settings from "./pages/Settings";
 import AppPage from "./pages/AppPage";
+import Temp from "./pages/Temp";
 function App() {
-  const [user, setUser] = useState(0);
-
-  //setter for later adding users via AddUser
   const [userList, setUserList] = useState([
-    { userID: 0, userIcon: <FaPlus />, userName: "Add User" },
-    { userID: 1, userIcon: <FaUserAstronaut />, userName: "AstroKing42" },
-    { userID: 2, userIcon: <FaUserSecret />, userName: "CoolAgent007" },
+    {
+      id: 0,
+      icon: <FaUserAstronaut />,
+      name: "AstroKing42",
+      selected: false,
+      mode: "Online",
+    },
+    {
+      id: 1,
+      icon: <FaUserSecret />,
+      name: "CoolAgent007",
+      selected: false,
+      mode: "Online",
+    },
   ]);
   return (
     <Router>
       <Routes>
-        <Route
-          path="/"
-          index
-          element={<Navigate replace to="/ps5-clone/Login" />}
-        ></Route>
+        <Route path="/" element={<Navigate replace to="/ps5-clone/Login" />} />
         <Route
           path="/ps5-clone/Login"
-          element={<Login setUser={setUser} userList={userList}/>}
-        ></Route>
-        <Route path="/ps5-clone/Home" element={<Home user={user} userList={userList} />}></Route>
-        <Route path="/ps5-clone/Search" element={<Search />}></Route>
-        <Route path="/ps5-clone/Settings" element={<Settings />}></Route>
-        <Route path="/ps5-clone/AppPage" element={<AppPage />}></Route>
+          element={<Login userList={userList} setUserList={setUserList} />}
+        />
+        <Route
+          path="/ps5-clone/Home"
+          element={<Home userList={userList} setUserList={setUserList} />}
+        />
+        <Route path="/ps5-clone/Search" element={<Search />} />
+        <Route path="/ps5-clone/Settings" element={<Settings />} />
+        <Route path="/ps5-clone/AppPage" element={<AppPage />} />
+        <Route path="*" element={<Temp />} />
       </Routes>
     </Router>
   );

@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
+// import { useNavigate } from "react-router-dom";
 import Axios from "axios";
 import "./stylesheets/Search.css";
 import ResultCard from "../components/ResultCard";
 import { FaMicrophone } from "react-icons/fa";
 
 function Search() {
+  // let navigate = useNavigate();
   const [search, setSearch] = useState("");
   const [data, setData] = useState([]);
   const [searchTab, setSearchTab] = useState("All");
@@ -19,15 +21,28 @@ function Search() {
       });
     }
     getData(1);
+    // const cards = document.querySelectorAll(".card-container");
+    // for (let i = 0; i < cards.length; i++) {
+    //   cards[i].addEventListener("click", () => {
+    //     console.log("click recorded");
+    //     navigate("/ps5-clone/AppPage", data[i].Title);
+    //   });
+    // }
   }, [search, searchTab]);
   const getData = (page) => {
     let type = "";
     switch (searchTab) {
+      case "All":
+        type = "";
+        break;
       case "Games":
         type = "game";
         break;
-      default:
+      case "Media":
         type = "";
+        break;
+      default:
+        type = "none";
     }
     Axios.get(
       `https://www.omdbapi.com/?apikey=45ad3714&s=${search}&type=${type}&page=${page}`
@@ -36,7 +51,7 @@ function Search() {
       setData(response.data.Search);
     });
   };
-  
+
   return (
     <div id="search-page">
       <ul id="search-nav">
@@ -64,13 +79,6 @@ function Search() {
           : "No Results Found"}
       </div>
     </div>
-    // <div className="Search">
-    //   Hello
-    //   {data
-    //       .map((item) => (
-    //         <div key={item.imdbID}>{item.Title}</div>
-    //       ))}
-    // </div>
   );
 }
 

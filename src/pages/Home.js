@@ -3,15 +3,15 @@ import AppMenu from "../components/AppMenu";
 import { useState } from "react";
 import "./stylesheets/Home.css";
 
-const Home = ({ user, userList }) => {
+const Home = ({ userList, setUserList }) => {
   const [activeTab, setActiveTab] = useState("Games");
   return (
     <div id="home-page">
       <Navbar
-        tab={activeTab}
         setTab={setActiveTab}
-        user={user}
+        setUserList={setUserList}
         userList={userList}
+        user={userList.filter(user=>user.selected===true)[0]}
       />
       {activeTab === "Games" || activeTab === "Media" ? (
         <div>

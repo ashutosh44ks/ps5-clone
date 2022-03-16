@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./stylesheets/ResultCard.css";
+import { GiConsoleController } from "react-icons/gi";
+import { MdMonitor } from "react-icons/md";
 
 const ResultCard = ({ item }) => {
   let navigate = useNavigate();
@@ -19,7 +21,9 @@ const ResultCard = ({ item }) => {
         <div className="card-title">{item.Title}</div>
         <div className="card-info">
           <div className="card-price">{item.Year}</div>
-          <div className="card-type">{item.Type}</div>
+          <div className="card-type">
+            {item.Type === "game" ? <GiConsoleController /> : <MdMonitor />}
+          </div>
         </div>
       </div>
     </div>
