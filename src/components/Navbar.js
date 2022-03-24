@@ -1,5 +1,7 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
 import Clock from "react-live-clock";
 import SubDropdownMenu from "./SubDropdownMenu";
 import { FaSearch, FaUser } from "react-icons/fa";
@@ -12,6 +14,7 @@ import { GiLaurelsTrophy } from "react-icons/gi";
 import "./stylesheets/Navbar.css";
 //FIGURE OUT HOW TO FIX subDropdown
 const Navbar = ({ setTab, userList, setUserList, user }) => {
+  let navigate = useNavigate();
   useEffect(() => {
     console.log("current user ", user);
     function switchTabs(i) {
@@ -68,39 +71,53 @@ const Navbar = ({ setTab, userList, setUserList, user }) => {
                 </div>
                 <div>
                   <GoPrimitiveDot /> <span>{user.mode}</span>
-                  <SubDropdownMenu userList={userList} setUserList={setUserList} />
+                  <SubDropdownMenu
+                    userList={userList}
+                    setUserList={setUserList}
+                  />
                 </div>
               </li>
-              <li className="middle-li">
+              <li
+                className="middle-li"
+                onClick={() => {
+                  navigate("/ps5-clone/Profile");
+                }}
+              >
                 <div>
                   <CgUserlane />
                   Profile
-                  {/* New Page */}
                 </div>
               </li>
-              <li className="middle-li">
+              <li
+                className="middle-li li-trophies"
+                onClick={() => {
+                  navigate("/ps5-clone/Trophies");
+                }}
+              >
                 <div>
                   <AiFillTrophy /> Trophies
-                  {/* New Page */}
                 </div>
                 <div>
                   <GiLaurelsTrophy /> <span>0</span>
                 </div>
               </li>
-              <li className="middle-li">
+              <li className="middle-li"
+              >
                 <div>
                   <FaUser />
                   Switch User
                   {/* Modal of Login */}
                 </div>
               </li>
-              <li>
-                <Link to="/ps5-clone/LogIn">
-                  <div>
-                    <RiLogoutBoxRLine />
-                    Log Out
-                  </div>
-                </Link>
+              <li
+                onClick={() => {
+                  navigate("/ps5-clone/Login");
+                }}
+              >
+                <div>
+                  <RiLogoutBoxRLine />
+                  Log Out
+                </div>
               </li>
             </ul>
           </li>

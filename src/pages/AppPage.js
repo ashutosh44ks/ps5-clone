@@ -4,15 +4,18 @@ import { useLocation } from "react-router-dom";
 import "./stylesheets/AppPage.css";
 
 const AppPage = () => {
-  let location = useLocation();
-  const [bgUrl, setBgUrl] = useState("https://i.ytimg.com/vi/yTXZEnGrZpw/maxresdefault.jpg");
+  const { state } = useLocation();
+  console.log(state);
+  const [bgUrl, setBgUrl] = useState(
+    "https://i.ytimg.com/vi/yTXZEnGrZpw/maxresdefault.jpg"
+  );
   useEffect(() => {
     //https://rapidapi.com/contextualwebsearch/api/web-search/
     const options = {
       method: "GET",
       url: "https://contextualwebsearch-websearch-v1.p.rapidapi.com/api/Search/ImageSearchAPI",
       params: {
-        q: `${location.state} game wallpaper`,
+        q: `${state} game wallpaper`,
         pageNumber: "1",
         pageSize: "1",
         autoCorrect: "true",
@@ -26,6 +29,7 @@ const AppPage = () => {
     axios
       .request(options)
       .then((response) => {
+        console.log(response.data.value[0].url);
         setBgUrl(response.data.value[0].url);
       })
       .catch((error) => {
@@ -35,11 +39,11 @@ const AppPage = () => {
 
   return (
     <>
-    <div className="bg" style={{ background: `url(${bgUrl})` }}></div>
-    <div id="app-page" >
-      <header>{location.state}</header>
-      <div id="app-page-body">Hello</div>
-    </div>
+      <div className="bg" style={{ background: `url(${bgUrl})` }}></div>
+      <div id="app-page">
+        <header>{}</header>
+        <div id="app-page-body">Hello</div>
+      </div>
     </>
   );
 };

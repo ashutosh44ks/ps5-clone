@@ -5,6 +5,8 @@ import { TiTick } from "react-icons/ti";
 import { GoPrimitiveDot } from "react-icons/go";
 const SubDropdownMenu = ({ userList, setUserList }) => {
   useEffect(() => {
+    console.log("loaded");
+    userList.forEach((u) => (console.log(u.mode)));
     const LIs = document.querySelectorAll(".sdm-li");
     const activeLI = document.querySelector(".sdm-active");
     if (activeLI === null) LIs[0].classList.add("sdm-active");
@@ -22,6 +24,7 @@ const SubDropdownMenu = ({ userList, setUserList }) => {
       LIs.forEach((li) => {
         li.removeEventListener("click", () => activator(li));
       });
+      console.log("unloaded");
     };
   }, [setUserList, userList]);
   return (

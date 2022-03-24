@@ -10,6 +10,7 @@
 #app-page {
   position: relative;
   padding: 2rem;
+  color: white;
 }
 #app-page-body {
   padding: 2rem 4rem 1rem 4rem;

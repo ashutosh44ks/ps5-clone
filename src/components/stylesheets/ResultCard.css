@@ -22,3 +22,13 @@
   display: flex;
   justify-content: space-between;
 }
+.user-card-body {
+  margin: 1rem 0;
+  padding: 0.8rem;
+  font-style: italic;
+}
+.user-pic {
+  border-radius: 3rem;
+  height: 6rem;
+  margin: 1.5rem 3.5rem 0;
+}
